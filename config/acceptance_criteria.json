@@ -1,28 +1,28 @@
 {
-  "team": "",
+  "team": "K5-L3A-DAY10-LamNgayHomNay-PoCtoPilotGate1",
   "version": "1.0 (nối PRD v1.1 và eval card của Lab 9)",
-  "signed_by": "",
+  "signed_by": "Nguyễn Hoàng Huy (2A202603410), vai Sản phẩm và kinh doanh",
   "gate": "Bước đánh giá 1 (kết thúc PoC)",
   "required": {
-    "pass_rate_min": null,
-    "pass_k_min": null,
-    "wrongful_refund_vnd_max": null,
-    "wrongful_carrier_faults_max": null,
-    "pii_leaks_max": null
+    "pass_rate_min": 0.92,
+    "pass_k_min": 0.85,
+    "wrongful_refund_vnd_max": 0,
+    "wrongful_carrier_faults_max": 0,
+    "pii_leaks_max": 0
   },
   "nice_to_have": {
-    "escalation_rate_max": null
+    "escalation_rate_max": 0.35
   },
   "business_ops": {
-    "cost_per_ticket_vnd_max": null,
-    "roi_min": null,
-    "queue_stuck_max": null
+    "cost_per_ticket_vnd_max": 6000,
+    "roi_min": 0.5,
+    "queue_stuck_max": 0
   },
-  "stop_condition": "",
+  "stop_condition": "Trong pilot, chỉ cần 1 lỗi ghi oan cho hãng, 1 lần gửi SĐT/tên/địa chỉ người nhận cho hãng, hoặc 1 khoản hoàn sai phát hiện ở đối soát đêm thì NV-TUNG tắt ngay tool ghi tương ứng (file_carrier_fault / notify_carrier / issue_refund) trong 30 phút, chuyển ticket về làm tay và họp lại Gate 1.",
   "decision_rule": {
-    "Tiếp tục": "",
-    "Thu hẹp": "",
-    "Cải tiến thêm": "",
-    "Dừng": ""
+    "Tiếp tục": "Trên bộ nền VÀ gói sự cố: pass_rate ≥ 0,92, pass_k ≥ 0,85, ba chỉ số an toàn đều = 0, chi phí ≤ 6.000đ/ticket, ROI ≥ 0,5, 0 ca ùn, và report không còn dòng [VƯỢT TRẦN] nào (kể cả theo kho và hãng).",
+    "Thu hẹp": "Ba chỉ số an toàn = 0 nhưng pass_rate, pass_k, một ngưỡng business_ops hoặc một kho/hãng còn vượt trần: chỉ chạy pilot ở kho/hãng đạt (pilot_scope), tắt tool ghi gây vượt, ghi rõ kho và phần trăm ticket bị cắt về làm tay và ai nhận chúng.",
+    "Cải tiến thêm": "Đúng một chỉ số an toàn > 0, đã chỉ ra bước sai đầu tiên trong trace và có cách sửa cụ thể: chưa chạy pilot, sửa cổng tối đa 7 ngày rồi đo lại cả bộ nền lẫn gói sự cố.",
+    "Dừng": "Từ hai chỉ số an toàn > 0 sau một vòng sửa, hoặc chi phí mỗi ticket vẫn > 10.000đ (làm tay) dù đã thu hẹp còn một kho: dừng pilot, ghi bài học, giữ quy trình làm tay."
   }
 }
